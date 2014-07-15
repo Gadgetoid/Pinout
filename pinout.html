@@ -16,18 +16,18 @@
 			<!--li class="legend_ladder"><a title="Ladder Board" href="/pinout/ladder">Ladder</a></li-->
 			<li class="legend_ledborg"><a title="PiBorg LedBorg RGB LED Board" href="/pinout/ledborg">LedBorg</a></li>
 			<li class="legend_clockatoo"><a title="GeekRoo Clockatoo" href="/pinout/clockatoo">Clockatoo</a></li>
-			<li class="legend_atmega"><a title="ATmega 328p/Arduino" href="/pinout/atmega328-arduino">ATmega 328</a></li>
+			<li class="legend_atmega" data-pins="19,21,23,24,26"><a title="ATmega 328p/Arduino" href="/pinout/atmega328-arduino">ATmega 328</a></li>
 		</ul>
 		<ul class="legend">
 			<li>Click here -></li>
-			<li class="legend_5"><a title="5v Power" href="/pinout/5v-power">+5v</a></li>
-			<li class="legend_3"><a title="3.3v Power" href="/pinout/3v3-power">+3.3v</a></li>
-			<li class="legend_ground"><a title="0v Ground" href="/pinout/0v-ground">Ground, 0v</a></li>
-			<li class="legend_uart"><a title="UART" href="/pinout/uart">UART</a></li>
-			<li class="legend_gpio"><a title="GPIO" href="/pinout/gpio">GPIO</a></li>
-			<li class="legend_spi"><a title="SPI" href="/pinout/spi">SPI</a></li>
-			<li class="legend_i2c"><a title="I2C" href="/pinout/i2c">I<sup>2</sup>C</a></li>
-			<li class="legend_pwm"><a title="PWM" href="/pinout/pwm">PWM</a></li>
+			<li class="legend_5" data-pins="2,4"><a title="5v Power" href="/pinout/5v-power">+5v</a></li>
+			<li class="legend_3" data-pins="1,17"><a title="3.3v Power" href="/pinout/3v3-power">+3.3v</a></li>
+			<li class="legend_ground" data-pins="6,9,14,20,25,30,34,39"><a title="0v Ground" href="/pinout/0v-ground">Ground, 0v</a></li>
+			<li class="legend_uart" data-pins="8,10"><a title="UART" href="/pinout/uart">UART</a></li>
+			<li class="legend_gpio" data-pins="7,11,12,13,15,16,18,22"><a title="GPIO" href="/pinout/gpio">GPIO</a></li>
+			<li class="legend_spi" data-pins="19,21,23,24,26"><a title="SPI" href="/pinout/spi">SPI</a></li>
+			<li class="legend_i2c" data-pins="3,5,27,28"><a title="I2C" href="/pinout/i2c">I<sup>2</sup>C</a></li>
+			<li class="legend_pwm" data-pins="35,33,32,12"><a title="PWM" href="/pinout/pwm">PWM</a></li>
 		</ul>
 		<nav id="gpio">
 			<div id="pinbase"></div>
@@ -418,7 +418,7 @@ io.digital_write(9,HIGH)</pre>
 						</tbody>
 					</table>
 				</article>
-				<article>
+				<article class="homepage">
 					<h2>Pinout!</h2>
 					<h3>The comprehensive Raspberry Pi Pinout guide for the Revision 2.0 Raspberry Pi, now with Model B+</h3>
 					<p>Pinout isn't meant to be printable, but it's a great quick-reference and a comprehensive starter guide to learning about your Raspberry Pi's GPIO pins.</p>
@@ -427,39 +427,39 @@ io.digital_write(9,HIGH)</pre>
 					<p>Note: While I've placed a gap to visually separate the additional 14 pins on the B+, you wont find this gap on the actual board!</p>
 					
 				</article>
-				<article>
+				<article class="legend_5">
 					<h2>5v Power</h2>
 					<p class="intro">The 5v power pins, two of them, provide your project with any current your power adaptor can muster minus that which is used by the Pi itself.</p>
 					<p>5v power is great for regulating down to 3.3v, which you can then use to power an ATmega that's logic-level compatible with your Pi.</p>
 					<p>If you need more than 5v, driving motors for example, you'll have to find your power elsewhere!</p>
 				</article>
-				<article>
+				<article class="legend_3">
 					<h2>3.3v Power</h2>
 					<p class="intro">At a measly 50mA max current, the 3.3v pin on the Raspberry Pi isn't terribly useful, but it's enough to light an LED or two.</p>
 				</article>
-				<article>
+				<article class="legend_ground">
 					<h2>0v Ground</h2>
 					<p class="intro">When powering a project from the Pi, the Ground pin completes your circuit.</p>
 					<p>If you want to memorise this pinout, you should forget the ground pins spaced out around the GPIO header 
 					and focus just on the one below the 5v pins and pin 25.</p>
 				</article>
-				<article>
+				<article class="legend_uart">
 					<h2>UART - Universal Asynchronous Receiver/Transmitter</h2>
 					<p class="intro">The 2 UART pins in WiringPi are: 15, 16</p>
 					<p>UART is a handy, straight forward way to interface an Arduino ( or bootloaded ATmega ) with your Pi. You must, however, be careful with logic-levels between the two devices: the Pi is 3.3v and the Arduino is 5v. Connect the two and you might conjure up some magic blue smoke.</p>
 					<p>Personally I'm a fan of building out a <a href="http://www.hobbytronics.co.uk/ATmega328-arduino">Arduino Bootloaded ATmega 328</a> circuit on a breadboard with a voltage regulator to take the Pi's 5v line and convert it to 3.3v. The ATmega 328 seems to run quite happily at 3.3v using a 16Mhz crystal and you'll then have an Arduino clone with 3.3v logic.</p>
-<p>The following python example opens the Pi's UART at 9600baud and puts 'hello world'</p>
+					<p>The following python example opens the Pi's UART at 9600baud and puts 'hello world'</p>
 					<pre class="prettyprint">import wiringpi2 as wiringpi
 wiringpi.wiringPiSetup()
 serial = wiringpi.serialOpen('/dev/ttyAMA0',9600)
 wiringpi.serialPuts(serial,'hello world!')
 </pre>
 				</article>
-				<article>
+				<article class="legend_gpio">
 					<h2>GPIO - General Purpose Input/Output</h2>
 					<p class="intro">The 8 GPIO pins in WiringPi are: 0, 1, 2, 3, 4, 5, 6, 7</p>
 				</article>
-				<article>
+				<article class="legend_spi">
 					<h2>SPI - Serial Peripheral Interface</h2>
 					<p class="intro">Known as the four-wire serial bus, SPI lets you daisy-chain multiple compatible devices off a single set of pins by assigning them different addresses.</p>
 					<p>A simple example of an SPI peripheral is the MCP23S17 digital IO expander chip Note the S in place of the 0 found on the I<sup>2</sup>C version. Using it in WiringPi2 is a doddle:</p>
@@ -480,7 +480,7 @@ for pin in mcp23S17pins:
 					<p>Hook up you Pi's SPI port to that of your ATmega, and <em>power the ATmega from the 3.3v pin on the Pi</em>. Make sure you're not running any SPI device drivers, and run "avrdude -p m328p -c gpio" to verify the connection.</p>
 					<p>See the individual pins to learn how to connect up your ATmega.</p>
 				</article>
-				<article>
+				<article class="legend_i2c">
 					<h2>I2C - Inter Integrated Circuit</h2>
 					<p class="intro">The Raspberry Pi's I<sup>2</sup>C pins are an extremely useful way to talk to many different types of external peripheral; from the MCP23017 digital IO expander, to a connected ATmega.</p>
 
@@ -494,12 +494,12 @@ DEVICE_ADDR = 0x15
 bus = smbus.SMBus(DEVICE_BUS)
 bus.write_byte_data(DEVICE_ADDR, 0x00, 0x01)</pre>
 				</article>
-				<article>
+				<article class="legend_ladder">
 					<h2>Raspberry Pi Ladder Board</h2>
 					<p class="intro">The inexpensive Raspberry Pi Ladder Kit is a great way to get started with GPIO tinkering.</p>
 					<p>It connects 12 LEDs and 4 buttons directly to the GPIO pins, making it extremely easy to start programming. Using the pins on the left, you simply set 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9, the LEDs, to OUTPUT (1) and 10,11,12,14, the buttons, to INPUT (0) and start reading/writing.</p>
-<p>In practice, it's actually a little more complicated than this. The buttons all need their pull up/down switched to PUD_UP/UP (2), because pressing a button on the ladder board pulls that pin down to ground.</p>
-<p>The code below should get you started:</p>
+					<p>In practice, it's actually a little more complicated than this. The buttons all need their pull up/down switched to PUD_UP/UP (2), because pressing a button on the ladder board pulls that pin down to ground.</p>
+					<p>The code below should get you started:</p>
 					<pre class="prettyprint lang-python">import wiringpi2 as wiringpi
 INPUT = 0
 OUTPUT = 1
@@ -529,7 +529,7 @@ while 1:
     wiringpi.delay(20)</pre>
 <p>The button locations and their corresponding pin numbers also don't correspond with those of the LEDs so we have to pair up the buttons accordingly for a basic example. Finally, never forget to call wiringpi.wiringPiSetup() or nothing much will happen!</p>
 				</article>
-				<article>
+				<article class="legend_wiringpi">
 					<h2>Raspberry Pi WiringPi</h2>
 					<p>WiringPi is an attempt to bring Arduino-wiring-like simplicity to the Raspberry Pi. The goal is to have a single common platform and set of functions for accessing the Raspberry Pi GPIO across muliple languages. WiringPi is a C library at heart, but it's available to both Ruby and Python users who can "gem install wiringpi" or "pip install wiringpi2" respectively.</p>	
 					<p>Python users note the 2 on the end, the WiringPi2-Python library finally brings a whole host of existing WiringPi functionality to Python including brand new features from WiringPi 2.</p>
@@ -543,7 +543,7 @@ while 1:
 					<pre class="prettyprint lang-bash">sudo pip install wiringpi2</pre>
 					<p>Note the 2 on the end? That's the all new, shinier WiringPi!</p>
 				</article>
-				<article>
+				<article class="legend_ledborg">
 					<h2>PiBorg LedBorg RGB LED Board</h2>
 					<p>The <a rel="nofollow" href="http://www.piborg.org/ledborg/">PiBorg LedBorg</a> is an ultra-bright RGB LED board for the Raspberry Pi. It has its own driver, so you don't need to drive it manually.</p>
 					<p>If you want a much, much wider range of colours, though, you can drive it manually using softPwm in WiringPi. The pin assignments for this are as follows:</p>
@@ -560,7 +560,7 @@ wiringpi.softPwmWrite(3,100)
 wiringpi.softPwmWrite(0,100)
 					</pre>
 				</article>
-				<article>
+				<article class="legend_clockatoo">
 					<h2>Geekroo Clockatoo Clock Board With buzzer</h2>
 					<p class="intro">The Clockatoo buzzer is available on WiringPi pin 7, GPIO pin 4.</p>
 					<p>The <a rel="nofollow" href="https://www.modmypi.com/geekroo-raspberry-pi-real-time-clock">GeekRoo Clockatoo</a> is a great little board combining a battery-backed up real-time clock, a 4 digit, 7 segment display and a buzzer into one package.</p>
@@ -575,7 +575,7 @@ wiringpi.softToneWrite(7,1)
 
 					<p>The second parameter for softToneWrite is the frequency, drive it higher and the alarm sound will become steadily more irritating until you're sure to wake up!</p>
 				</article>
-				<article>
+				<article class="legend_atmega">
 					<h2>ATmega 328p / Arduino over SPI</h2>
 					<p class="intro">Did you know that your Pi could power and program an ATmega 328p/Arduino directly, with nothing but a few wires, a breadboard, a 16Mhz crystal oscillator and some 22pF capacitors?</p>
 					<p>Read my <a href="http://pi.gadgetoid.com/article/building-the-pico-piduino">complete Pico PiDuino tutorial</a> to get started for just over &pound;5</p>
@@ -589,7 +589,7 @@ wiringpi.softToneWrite(7,1)
 					<p><a href="/arduino/Makefile">This basic Makefile</a> should get you started. Create a basic sketch, name it mysketch.ino and run:</p>
 					<pre class="prettyprint">export BOARD=atmega328<br />make<br />avrdude -p m328p -c gpio -e -U flash:w:build-cli/Arduino.hex</pre>
 				</article>
-				<article>
+				<article class="legend_pwm">
 					<h2>PWM - Pulse Width Modulation</h2>
 				</article>
 			</div>
@@ -598,8 +598,8 @@ wiringpi.softToneWrite(7,1)
 		<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/cycle/2.9999.81/jquery.cycle.all.js"></script>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/prettify/0.1/prettify.js"></script>
-    		<script src='/prettify/lang-ruby.js'></script>
-    		<script src='/prettify/lang-bash.js'></script>
+    	<script src='/prettify/lang-ruby.js'></script>
+    	<script src='/prettify/lang-bash.js'></script>
 		<script src='//cdn.jsdelivr.net/history.js/1.7.1/history.js'></script>
 		<script src='//cdn.jsdelivr.net/history.js/1.7.1/history.adapter.jquery.js'></script>
 		<script src='/pinout.js'></script>
