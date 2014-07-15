@@ -1,0 +1,1054 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Raspberry Pi Pinout - Rev 2 Board</title>
+		<link href='http://fonts.googleapis.com/css?family=Sanchez|Ubuntu+Mono' rel='stylesheet' type='text/css' />
+		<link href='/prettify/prettify.css' rel='stylesheet' />
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+		<style type="text/css">
+			* {margin:0;padding:0;text-decoration:none;}
+			body {font-family:'Sanchez', sans-serif;}
+			pre {font-family:'Ubuntu Mono', sans-serif;font-size:13px;}
+			ul.bottom a {color:#E9E5D2;}
+			ul.top a {color:#063541;}
+			table {margin:20px 0;border-collapse:collapse;}
+			table td, table th {border:1px solid #073642;padding:5px;}
+			table th {background:#073642;color:#EBE6D3;}
+			table * {text-align:left;font-size:13px;}
+			nav#gpio {
+				position:relative;
+				width:244px;
+				background:#5F8645;
+				height:680px;
+				float:left;
+				margin-right:136px;
+			}
+			.phys {font-size:90%;opacity:0.8;color:#D33682;}
+			.bottom .phys {color:#002B36;}
+			.bottom .active .phys, .bottom :hover .phys,
+			.bottom .legend .phys {color:#FFF;}
+			#content {
+				float:left;
+				background:#EBE6D3;
+				width:500px;
+				min-height:600px;
+				padding-bottom:60px;
+			}
+			#content article {
+				background:#EBE6D3;
+				padding:20px;
+				width:460px;
+			}
+			nav#gpio ul.top {
+				position:absolute;
+				left:200px;
+				top:17px;
+				list-style:none;
+			}
+			nav#gpio ul.bottom {
+				position:absolute;
+				left:16px;
+				top:17px;
+				list-style:none;
+			}
+			nav#gpio ul.top li {text-indent:52px;}
+			nav#gpio li a {
+				display:block;
+				width:180px;
+				position:relative;
+				font-size:12px;
+				line-height:29px;
+				height:27px;
+				margin-bottom:2px;
+			}
+			nav#gpio li a:hover,
+			nav#gpio li.active a {
+				background:#EBE6D3;
+				border-top-left-radius:13px;
+				border-bottom-left-radius:13px;
+			}
+			nav#gpio ul.bottom li a:hover,
+			nav#gpio ul.bottom li.active a {
+				background:#063541;
+				border-top-right-radius:13px;
+				border-bottom-right-radius:13px;
+				border-top-left-radius:0px;
+				border-bottom-left-radius:0px;
+			}
+			nav#gpio ul.bottom a {
+				text-indent:10px;
+			}
+			nav#gpio span.pin {
+				display:block;
+				border:1px solid #FFFFFF;
+				border-radius:50%;
+				width:19px;
+				height:19px;
+				background:#002B36;
+				position:absolute;
+				right:3px;
+				top:3px;
+			}
+			nav#gpio li.legend a {
+				background:#EBE6D3;
+				/*height:37px;
+				margin-bottom:3px;
+				position:relative;
+				top:-5px;*/
+			}
+
+			nav#gpio li.legend a {}
+			nav#gpio ul.bottom li.legend a {
+				background:#063541;}
+			nav#gpio ul.top li.legend {
+				width:177px;
+				position:relative;
+				padding-left:5px;
+				left:-5px;
+			}
+			nav#gpio ul.top span.pin {
+				left:3px;
+				top:3px;
+			}
+			nav#gpio span.pin:after {
+				content:'';
+				display:block;
+				border-radius:100%;
+				background:#FDF6E3;
+				position:absolute;
+				left:6px;
+				top:6px;
+				width:7px;
+				height:7px;
+				font-size:7px;
+				box-shadow: 0 0 5px rgba(10,41,51,0.5);
+			}
+			nav#gpio li.pin2 span.pin,
+			nav#gpio li.pin4 span.pin {
+				background:#DC322F;
+			}
+			nav#gpio li.pin3 span.pin,
+			nav#gpio li.pin5 span.pin,
+			nav#gpio li.pin27 span.pin,
+			nav#gpio li.pin28 span.pin {
+				background:#268BD2;
+			}
+			nav#gpio li.pin8 span.pin,
+			nav#gpio li.pin10 span.pin,
+			nav#gpio li.pin17 span.pin {
+				background:#B58900;
+			}
+			nav#gpio li.pin7 span.pin,
+			nav#gpio li.pin11 span.pin,
+			nav#gpio li.pin13 span.pin,
+			nav#gpio li.pin15 span.pin,
+			nav#gpio li.pin12 span.pin,
+			nav#gpio li.pin16 span.pin,
+			nav#gpio li.pin18 span.pin,
+			nav#gpio li.pin22 span.pin,
+
+			nav#gpio li.pin29 span.pin,
+			nav#gpio li.pin31 span.pin,
+			nav#gpio li.pin33 span.pin,
+			nav#gpio li.pin32 span.pin,
+			nav#gpio li.pin35 span.pin,
+			nav#gpio li.pin36 span.pin,
+			nav#gpio li.pin37 span.pin,
+			nav#gpio li.pin38 span.pin,
+			nav#gpio li.pin40 span.pin  {
+				background:#859900;
+			}
+			nav#gpio li.pin19 span.pin,
+			nav#gpio li.pin21 span.pin,
+			nav#gpio li.pin23 span.pin,
+			nav#gpio li.pin24 span.pin,
+			nav#gpio li.pin26 span.pin {
+				background:#D33682;
+			}
+			nav#gpio li.pin1 span.pin {
+				border-radius:0;
+				background:#B58900;
+			}
+			div#pinbase {
+				width:72px;
+				height:389px;
+				background:#073642;
+				position:absolute;
+				left:162px;
+				top:10px;
+			}
+			div#pinbasebplus {
+				width:72px;
+				height:215px;
+				background:#184753;
+				position:absolute;
+				left:162px;
+				top:401px;
+			}
+			h1 {
+				width:250px;
+				font-size:34px;
+				color:#888888;
+				margin-bottom:5px;
+				cursor:pointer;
+			}
+			h1 img {float:left;position:relative;top:0px;margin:0 13px;
+				-moz-transform:rotate(-45deg);
+				-webkit-transform:rotate(-45deg);
+				transform:rotate(-45deg);
+				width:30px;
+			}
+			h1 span {
+				color:#D6264E;
+			}
+			h1 span.out {
+				color:#5FB12D;
+			}
+			.pin27, .pin28 {margin-top:16px;}
+			p.intro {
+				color:#268BD2;
+			}
+			p,pre {margin-top:10px;font-size: 15px;
+line-height: 150%;}
+			h3 {
+				color:#D33682;
+				font-size:16px;
+				font-weight:bold;
+			}
+			#container {
+				width:880px;
+				margin:0 auto;
+				margin-top:10px;
+			}
+			article a {color:#859900;text-decoration:underline;}
+			article ul {margin-left:20px;margin-top:10px;}
+			article {min-height:680px;}
+			ul.legend {
+				float:right;
+				list-style:none;
+				margin-top:-26px;
+			}
+			ul.legend.expansion {
+				margin-top:-52px;
+			}
+			ul.legend li {
+				float:left;
+				line-height:20px;
+				font-size:12px;
+				padding:3px 7px;
+				height:20px;
+			}
+			ul.legend li a {
+				color:#FDF6E3;
+			}
+			
+			li.legend_5 {background:#DC322F;}
+			li.legend_3 {background:#B58900;}
+			li.legend_ground, li.legend_pwm {background:#002B36;}
+			li.legend_uart {background:#B58900;}
+			li.legend_gpio {background:#859900;}
+			li.legend_spi {background:#D33682;}
+			li.legend_i2c, li.legend_atmega {background:#268BD2;}
+			li.legend_ladder {background:#5F8645;}
+			li.legend_wiringpi {background:#EBE6D3;}
+			ul.legend li.legend_wiringpi a {color:#063541;}
+			li.legend_ledborg {background:#000000;}
+			ul.legend li.legend_ledborg a {color:#FFFFFF;}
+
+			li.legend_clockatoo {background:#D33682;}
+
+			span.alternate {display:none;}
+
+			ol.linenums {margin-left:30px;}
+
+			/*@media print {
+				ul.legend {display:none;}
+				div#content {display:none;}
+				body {zoom:0.3;}
+			}*/
+		</style>
+    <script type='text/javascript'>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32070014-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+	</head>
+	<body>
+		<div id="container">
+		<h1><img src="/pinout-logo.png" style="top:8px;" /><span>Pi</span>n<span class="out">out</span></h1>
+		<ul class="legend expansion">
+			<li>Expansion boards -></li>
+			<li class="legend_wiringpi"><a title="WiringPi" href="/pinout/wiringpi">WiringPi</a></li>
+			<!--li class="legend_ladder"><a title="Ladder Board" href="/pinout/ladder">Ladder</a></li-->
+			<li class="legend_ledborg"><a title="PiBorg LedBorg RGB LED Board" href="/pinout/ledborg">LedBorg</a></li>
+			<li class="legend_clockatoo"><a title="GeekRoo Clockatoo" href="/pinout/clockatoo">Clockatoo</a></li>
+			<li class="legend_atmega"><a title="ATmega 328p/Arduino" href="/pinout/atmega328-arduino">ATmega 328</a></li>
+		</ul>
+		<ul class="legend">
+			<li>Click here -></li>
+			<li class="legend_5"><a title="5v Power" href="/pinout/5v-power">+5v</a></li>
+			<li class="legend_3"><a title="3.3v Power" href="/pinout/3v3-power">+3.3v</a></li>
+			<li class="legend_ground"><a title="0v Ground" href="/pinout/0v-ground">Ground, 0v</a></li>
+			<li class="legend_uart"><a title="UART" href="/pinout/uart">UART</a></li>
+			<li class="legend_gpio"><a title="GPIO" href="/pinout/gpio">GPIO</a></li>
+			<li class="legend_spi"><a title="SPI" href="/pinout/spi">SPI</a></li>
+			<li class="legend_i2c"><a title="I2C" href="/pinout/i2c">I<sup>2</sup>C</a></li>
+			<li class="legend_pwm"><a title="PWM" href="/pinout/pwm">PWM</a></li>
+		</ul>
+		<nav id="gpio">
+			<div id="pinbase"></div>
+			<div id="pinbasebplus"></div>
+			<ul class="bottom">
+				<li class="pin1"><a href="/pinout/pin1_3v3_power">
+<span class="default"><span class="phys">1</span> 3v3 Power</span> <span class="pin"></span></a></li>
+				<li class="pin3 i2c"><a href="/pinout/pin3_gpio0">
+<span class="default"><span class="phys">3</span> GPIO 0 <small>(SDA)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 8</span>
+<span class="alternate legend_ladder">8: Small Green LED</span>
+ <span class="pin"></span></a></li>
+				<li class="pin5 iwc"><a href="/pinout/pin5_gpio1">
+<span class="default"><span class="phys">5</span> GPIO 1 <small>(SCL)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 9</span>
+<span class="alternate legend_ladder">9: Small Red LED</span> <span class="pin"></span></a></li>
+				<li class="pin7"><a href="/pinout/pin7_gpio4">
+<span class="default"><span class="phys">7</span> GPIO 4 <small>(GPCLK0)</small></span>
+<span class="alternate legend_clockatoo">Clockatoo Buzzer</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 7</span>
+<span class="alternate legend_ladder">7: Blue LED 2</span> <span class="pin"></span></a></li>
+				<li class="pin9"><a href="/pinout/pin9_ground">
+<span class="default"><span class="phys">9</span> Ground</span>
+ <span class="pin"></span></a></li>
+				<li class="pin11"><a href="/pinout/pin11_gpio17">
+<span class="default"><span class="phys">11</span> GPIO 17</span>
+<span class="alternate legend_ledborg">WiringPi Pin 0</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 0</span>
+<span class="alternate legend_ladder">0: Red LED 1</span> <span class="pin"></span></a></li>
+				<li class="pin13"><a href="/pinout/pin13_gpio21">
+<span class="default"><span class="phys">13</span> GPIO 27 <small>(PCM_D)</small></span>
+<span class="alternate legend_ledborg">WiringPi Pin 2</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 2</span>
+<span class="alternate legend_ladder">2: Yellow LED 1</span>
+ <span class="pin"></span></a></li>
+				<li class="pin15"><a href="/pinout/pin15_gpio22">
+<span class="default"><span class="phys">15</span> GPIO 22</span>
+<span class="alternate legend_ledborg">WiringPi Pin 3</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 3</span>
+<span class="alternate legend_ladder">3: Yellow LED 2</span>
+ <span class="pin"></span></a></li>
+				<li class="pin17"><a href="/pinout/pin17_3v3_power">
+<span class="default"><span class="phys">17</span> 3v3 Power</span>
+ <span class="pin"></span></a></li>
+				<li class="pin19 spi"><a href="/pinout/pin19_gpio10">
+<span class="default"><span class="phys">19</span> GPIO 10 <small>(MOSI)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 12</span>
+<span class="alternate legend_ladder">12: Button 3</span>
+ <span class="pin"></span></a></li>
+				<li class="pin21 spi"><a href="/pinout/pin21_gpio9">
+<span class="default"><span class="phys">21</span> GPIO 9 <small>(MISO)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 13</span>
+<span class="alternate legend_ladder">13: Button 4</span>
+ <span class="pin"></span></a></li>
+				<li class="pin23 spi"><a href="/pinout/pin23_gpio11">
+<span class="default"><span class="phys">23</span> GPIO 11 <small>(SCKL)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 14</span>
+ <span class="pin"></span></a></li>
+				<li class="pin25"><a href="/pinout/pin25_ground">
+<span class="default"><span class="phys">25</span> Ground</span>
+ <span class="pin"></span></a></li>
+
+
+
+				<!-- B+ -->
+				<li class="pin27 bplus"><a href="/pinout/pin27_id_sd"><span class="default"><span class="phys">27</span> ID_SD</span> <span class="pin"></span></a></li>
+				<li class="pin29 bplus"><a href="/pinout/pin29_gpio5"><span class="default"><span class="phys">29</span> GPIO 5</span> <span class="pin"></span></a></li>
+				<li class="pin31 bplus"><a href="/pinout/pin31_gpio6"><span class="default"><span class="phys">31</span> GPIO 6</span> <span class="pin"></span></a></li>
+				<li class="pin33 bplus"><a href="/pinout/pin33_gpio13"><span class="default"><span class="phys">33</span> GPIO 13</span> <span class="pin"></span></a></li>
+				<li class="pin35 bplus"><a href="/pinout/pin35_gpio19"><span class="default"><span class="phys">35</span> GPIO 19 (MISO)</span> <span class="pin"></span></a></li>
+				<li class="pin37 bplus"><a href="/pinout/pin37_gpio26"><span class="default"><span class="phys">37</span> GPIO 26</span> <span class="pin"></span></a></li>
+				<li class="pin39 bplus"><a href="/pinout/pin39_ground"><span class="default"><span class="phys">39</span> Ground</span> <span class="pin"></span></a></li>
+				<!-- /B+ -->
+
+
+			</ul>
+			<ul class="top">
+				<li class="pin2"><a href="/pinout/pin2_5v_power">
+<span class="default"><span class="phys">2</span> 5v Power</span>
+ <span class="pin"></span></a></li>
+				<li class="pin4"><a href="/pinout/pin4_5v_power">
+<span class="default"><span class="phys">4</span> 5v Power</span>
+ <span class="pin"></span></a></li>
+				<li class="pin6"><a href="/pinout/pin6_ground">
+<span class="default"><span class="phys">6</span> Ground</span>
+ <span class="pin"></span></a></li>
+				<li class="pin8 uart"><a href="/pinout/pin8_gpio8">
+<span class="default"><span class="phys">8</span> GPIO 14 <small>(TXD)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 15</span>
+ <span class="pin"></span></a></li>
+				<li class="pin10 uart"><a href="/pinout/pin10_gpio10">
+<span class="default"><span class="phys">10</span> GPIO 15 <small>(RXD)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 16</span>
+ <span class="pin"></span></a></li>
+				<li class="pin12"><a href="/pinout/pin12_gpio18">
+<span class="default"><span class="phys">12</span> GPIO 18 <small>(PCM_C)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 1</span>
+<span class="alternate legend_ladder">1: Red LED 2</span>
+ <span class="pin"></span></a></li>
+				<li class="pin14"><a href="/pinout/pin14_ground">
+<span class="default"><span class="phys">14</span> Ground</span>
+ <span class="pin"></span></a></li>
+				<li class="pin16"><a href="/pinout/pin16_gpio23">
+<span class="default"><span class="phys">16</span> GPIO 23</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 4</span>
+<span class="alternate legend_ladder">4: Green LED 1</span>
+ <span class="pin"></span></a></li>
+				<li class="pin18"><a href="/pinout/pin18_gpio24">
+<span class="default"><span class="phys">18</span> GPIO 24</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 5</span>
+<span class="alternate legend_ladder">5: Green LED 2</span>
+ <span class="pin"></span></a></li>
+				<li class="pin20"><a href="/pinout/pin20_ground">
+<span class="default"><span class="phys">20</span> Ground</span>
+ <span class="pin"></span></a></li>
+				<li class="pin22"><a href="/pinout/pin22_gpio25">
+<span class="default"><span class="phys">22</span> GPIO 25</span>
+<span class="alternate legend_wiringpi">WiringPi Pin 6</span>
+<span class="alternate legend_ladder">6: Blue LED 1</span>
+ <span class="pin"></span></a></li>
+				<li class="pin24 spi"><a href="/pinout/pin24_gpio8">
+<span class="default"><span class="phys">24</span> GPIO 8 <small>(CE0)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 10</span>
+<span class="alternate legend_ladder">10: Button 2</span>
+ <span class="pin"></span></a></li>
+				<li class="pin26 spi"><a href="/pinout/pin26_gpio7">
+<span class="default"><span class="phys">26</span> GPIO 7 <small>(CE1)</small></span>
+<span class="alternate legend_wiringpi">WiringPi Pin 11</span>
+<span class="alternate legend_ladder">11: Button 1</span>
+ <span class="pin"></span></a></li>
+
+				<!-- B+ -->
+				<li class="pin28 bplus"><a href="/pinout/pin28_id_sc"><span class="default"><span class="phys">28</span> ID_SC</span> <span class="pin"></span></a></li>
+				<li class="pin30 bplus"><a href="/pinout/pin30_ground"><span class="default"><span class="phys">30</span> Ground</span> <span class="pin"></span></a></li>
+				<li class="pin32 bplus"><a href="/pinout/pin32_gpio12"><span class="default"><span class="phys">32</span> GPIO 12</span> <span class="pin"></span></a></li>
+				<li class="pin34 bplus"><a href="/pinout/pin34_ground"><span class="default"><span class="phys">34</span> Ground</span> <span class="pin"></span></a></li>
+				<li class="pin36 bplus"><a href="/pinout/pin36_gpio16"><span class="default"><span class="phys">36</span> GPIO 16</span> <span class="pin"></span></a></li>
+				<li class="pin38 bplus"><a href="/pinout/pin38_gpio20"><span class="default"><span class="phys">38</span> GPIO 20 (MOSI)</span> <span class="pin"></span></a></li>
+				<li class="pin40 bplus"><a href="/pinout/pin40_gpio21"><span class="default"><span class="phys">40</span> GPIO 21 (SCLK)</span> <span class="pin"></span></a></li>
+				<!-- /B+ -->
+			</ul>
+		</nav>
+		<div id="content">
+			<div id="pages">
+				<article>
+					<h2>3v3 Power</h2>
+					<p class="intro">The 3v3, 3.3 volt, supply pin on the Pi has a max current draw of 50 mA, enough to power a couple of LEDs but not much more.</p>
+					<p class="tip">You should use the 5v0 supply instead, and use a regulator if you need 3v3.</p>
+				</article>
+				<article>
+					<h2>GPIO 0 (SDA)</h2>
+					<h3>BCM pin 0 on Rev 1 board and pin 2 on Rev 2 board. WiringPi pin 8. Ladder Board Small Green LED.</h3>
+					<p>It's easy to get started writing a digital HIGH or LOW to a GPIO pin, but you've got to remember a few things:</p>
+					<ul>
+						<li>Run your script as root</li>
+						<li>Set your pin's mode to OUTPUT (1)</li>
+					</ul>
+					<p>Assuming you've installed WiringPi2-Python ( pip install wiringpi2 ) then try pasting the following into a .py file:</p>
+					<pre class="prettyprint linenums lang-python">import wiringpi2 as wiringpi
+HIGH = 1
+LOW = 0
+OUTPUT = 1
+INPUT = 0
+wiringpi.wiringPiSetup()
+wiringpi.pinMode(8,OUTPUT)
+wiringpi.digitalWrite(8,HIGH)</pre>
+					<p>Then run it with:</p>
+					<pre class="prettyprint lang-bash">sudo python myscript.py</pre>
+
+				</article>
+				<article>
+					<h2>GPIO 0 (SCL)</h2>
+					<h3>BCM pin 1 on Rev 1 board and pin 3 on Rev 2 board. WiringPi pin 9. Ladder Board Small Red LED.</h3>
+					<pre class="prettyprint linenums lang-ruby">require 'wiringpi2'
+HIGH = 1
+LOW = 0
+OUTPUT = 1
+INPUT = 0
+io = WiringPi::GPIO.new
+io.pin_mode(9,OUTPUT)
+io.digital_write(9,HIGH)</pre>
+
+				</article>
+				<article>
+					<h2>GPIO 4 (GPCLK0)</h2>
+					<h3>BCM pin 4. WiringPi pin 7. Quick2Wire I<sup>2</sup>C Interrupt. Ladder Board LED Blue 2.</h3>
+				</article>
+				<article><h2>Ground</h2></article>
+				<article>
+					<h2>GPIO 17</h2>
+					<h3>BCM pin 17. WiringPi pin 0. Quick2Wire Push Button. Ladder Board LED Red 1.</h3>
+				</article>
+				<article>
+					<h2>GPIO 21 (PCM_D)</h2>
+					<h3>BCM pin 21 on Rev 1 board and pin 27 on Rev 2 board. WiringPi pin 2. Ladder Board LED Yellow 1.</h3>
+				</article>
+				<article>
+					<h2>GPIO 22</h2>
+					<h3>BCM pin 22. WiringPi pin 3. Ladder Board LED Yellow 2.</h3>
+				</article>
+				<article><h2>3v3 Power</h2></article>
+				<article>
+					<h2>GPIO 10 (MOSI)</h2>
+					<h3>BCM pin 10. WiringPi pin 12. Ladder Board Button 3.</h3>
+					<p><i class="icon-info-sign"></i> Connect to the MOSI pin of an ATmega328, Arduino Pin 11, for programming with AVRDude. Make <em>sure</em> your ATmega328 is powered by a <a href="/pinout/pin1_3v3_power"><i class="icon-bolt"></i>3.3v supply</a>. If you're using 5v, make sure to use a logic-level converter.</p>
+				</article>
+				<article>
+					<h2>GPIO 9 (MISO)</h2>
+					<h3>BCM pin 9. WiringPi pin 13. Ladder Board Button 4.</h3>
+					<p><i class="icon-info-sign"></i> Connect to the MISO pin of an ATmega328, Arduino Pin 12, for programming with Gordon's modified AVRDude. Make <em>sure</em> your ATmega328 is powered by a <a href="/pinout/pin1_3v3_power"><i class="icon-bolt"></i>3.3v supply</a>. If you're using 5v, make sure to use a logic-level converter.</p>
+				</article>
+				<article>
+					<h2>GPIO 11 (SCLK)</h2>
+					<h3>BCM pin 11. WiringPi pin 14.</h3>
+					<p><i class="icon-info-sign"></i> Connect to the SCK pin of an ATmega328, Arduino Pin 13, for programming with Gordon's modified AVRDude. Make <em>sure</em> your ATmega328 is powered by a <a href="/pinout/pin1_3v3_power"><i class="icon-bolt"></i>3.3v supply</a>. If you're using 5v, make sure to use a logic-level converter.</p>
+				</article>
+				<article><h2>Ground</h2></article>
+
+<!-- B+ -->
+				<article><h2>EEPROM ID DATA</h2>
+					<h3>Model B+ only!</h3>
+					<p>The EEPROM ID pins are an i2c bus reserved for new add-on boards, which can incorporate an EEPROM with an ID and pin state configuration. They have no other purpose, and are cleverly placed so that they are hidden under protruding 26pin add-on boards rather than any other useful IO.</p></article>
+				<article><h2>GPIO 5</h2>
+					<h3>Model B+ only!</h3></article>
+				<article><h2>GPIO 6</h2>
+					<h3>Model B+ only!</h3></article>
+				<article><h2>GPIO 13</h2>
+					<h3>Model B+ only!</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ALT0 / PWM</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PWM 1</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article><h2>GPIO 19</h2>
+					<h3>Model B+ only!</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ALT0 / PCM</th>
+								<th>ALT4 / SPI1</th>
+								<th>ALT5 / PWM</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PCM Frame Sync</td>
+								<td>MISO</td>
+								<td>PWM1</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article><h2>GPIO 26</h2>
+					<h3>Model B+ only!</h3></article>
+				<article><h2>Ground</h2>
+					<h3>Model B+ only!</h3></article>
+<!-- /B+ -->
+				<article>
+					<h2>5v Power</h2>
+					<p class="intro">The 5v0 power pins are connected directly to the Pi's power input and will capably provide the full current of your mains adaptor, less that used by the Pi itself.</p>
+					<p>Don't be disuaded by what sounds like a measly low voltage. You can do a lot with this! I regularly use mine to power Arduinos and have even run a small Electroluminescent wire inverter right off the 5v pin!</p>
+				</article>
+				<article>
+					<h2>5v Power</h2>
+					<p>This pin is exactly the same as its 5v companion. Two is better than one, right? There's nothing much more to say about the 5v pin.</p>
+				</article>
+				<article><h2>Ground</h2>
+					<p>The Revision 2.0 Raspberry Pi turns all the original "do-not-connect" pins into additional ground. Pay careful attention to where these are, because connecting any outputs or voltage supplies directly to ground will not to your Pi any favours!</p>
+				</article>
+				<article>
+					<h2>GPIO 14 (TXD)</h2>
+					<h3>BCM pin 14. WiringPi pin 15.</h3>
+					<p>This pin doubles up as the <a href="http://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter">UART</a> transmit pin, TXD.</p>
+					<p>UART is extremely useful if you want to get into Piduino ( a delightful blend of Arduino and Raspberry Pi ) territory. Hook the RXD up to the Arduino's TXD via a 3.3v <-> 5v logic level converter, and the TXD up to the Arduino's RXD. Personally I avoid using a logic level converter and run my breadboard Arduino on <i class="icon-bolt"></i>3.3v.</p>
+				</article>
+				<article>
+					<h2>GPIO 15 (RXD)</h2>
+					<h3>BCM pin 15. WiringPi pin 16.</h3>
+					<p>This pin doubles up as the <a href="http://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter">UART</a> recieve pin, RXD.</p>
+				</article>
+				<article>
+					<h2>GPIO 18 (PCM_CLK)</h2>
+					<h3>BCM pin 18. WiringPi pin 1. Quick2Wire LED. Ladder Board LED Red 2.</h3>
+					
+					<table>
+						<thead>
+							<tr>
+								<th>ALT5 / PWM</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PWM 0</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article>
+					<h2>Ground</h2>
+				</article>
+				<article>
+					<h2>GPIO 23</h2>
+					<h3>BCM pin 23. WiringPi pin 4. Ladder Board LED Green 1.</h3>
+				</article>
+				<article>
+					<h2>GPIO 24</h2>
+					<h3>BCM pin 24. WiringPi pin 5. Ladder Board LED Green 2.</h3>
+				</article>
+				<article><h2>Ground</h2></article>
+				<article>
+					<h2>GPIO 25</h2>
+					<h3>BCM pin 25. WiringPi pin 6. Quick2Wire SPI Interrupt. Ladder Board LED Blue 1.</h3>
+				</article>
+				<article>
+					<h2>GPIO 8 (CE0)</h2>
+					<h3>BCM pin 8. WiringPi pin 10. Ladder Board Button 2.</h3>
+					<p><i class="icon-info-sign"></i> Connect <em>directly</em> to the Reset (RST) pin of an ATmega 328 for programming with Gordon's modified AVRDude. Make <em>sure</em> your ATmega328 is powered by a <a href="/pinout/pin1_3v3_power">3.3v supply</a>. If you're using 5v, make sure to use a logic-level converter.</p>
+				</article>
+				<article>
+					<h2>GPIO 7 (CE1)</h2>
+					<h3>BCM pin 7. WiringPi pin 11. Ladder Board Button 1.</h3>
+				</article>
+				<article><h2>EEPROM ID CLOCK</h2>
+					<h3>Model B+ only!</h3>
+					<p>The EEPROM ID pins are an i2c bus reserved for new add-on boards, which can incorporate an EEPROM with an ID and pin state configuration. They have no other purpose, and are cleverly placed so that they are hidden under protruding 26pin add-on boards rather than any other useful IO.</p>
+				</article>
+				<article><h2>Ground</h2>
+					<h3>Model B+ only!</h3>
+				</article>
+				<article><h2>GPIO 12</h2>
+					<h3>Model B+ only!</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ALT0 / PWM</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PWM 0</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article><h2>Ground</h2>
+					<h3>Model B+ only!</h3></article>
+				<article><h2>GPIO 16</h2>
+					<h3>Model B+ only!</h3></article>
+				<article><h2>GPIO 20</h2>
+					<h3>Model B+ only!</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ALT0 / PCM</th>
+								<th>ALT4 / SPI1</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PCM Data In</td>
+								<td>MOSI</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article><h2>GPIO 21</h2>
+					<h3>Model B+ only!</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ALT0 / PCM</th>
+								<th>ALT4 / SPI1</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PCM Data Out</td>
+								<td>SCLK</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article>
+					<h2>Pinout!</h2>
+					<h3>The comprehensive Raspberry Pi Pinout guide for the Revision 2.0 Raspberry Pi, now with Model B+</h3>
+					<p>Pinout isn't meant to be printable, but it's a great quick-reference and a comprehensive starter guide to learning about your Raspberry Pi's GPIO pins.</p>
+					<h2 style="margin-top:20px;">Model B+</h2>
+					<p>Now that the <a href="http://www.raspberrypi.org/introducing-raspberry-pi-model-b-plus/" rel="nofollow">Raspberry Pi Model B Plus</a> is here, I've updated Pinout with the 14 extra pins you'll find on your shiny new board.</p>
+					<p>Note: While I've placed a gap to visually separate the additional 14 pins on the B+, you wont find this gap on the actual board!</p>
+					
+				</article>
+				<article>
+					<h2>5v Power</h2>
+					<p class="intro">The 5v power pins, two of them, provide your project with any current your power adaptor can muster minus that which is used by the Pi itself.</p>
+					<p>5v power is great for regulating down to 3.3v, which you can then use to power an ATmega that's logic-level compatible with your Pi.</p>
+					<p>If you need more than 5v, driving motors for example, you'll have to find your power elsewhere!</p>
+				</article>
+				<article>
+					<h2>3.3v Power</h2>
+					<p class="intro">At a measly 50mA max current, the 3.3v pin on the Raspberry Pi isn't terribly useful, but it's enough to light an LED or two.</p>
+				</article>
+				<article>
+					<h2>0v Ground</h2>
+					<p class="intro">When powering a project from the Pi, the Ground pin completes your circuit.</p>
+					<p>If you want to memorise this pinout, you should forget the ground pins spaced out around the GPIO header 
+					and focus just on the one below the 5v pins and pin 25.</p>
+				</article>
+				<article>
+					<h2>UART - Universal Asynchronous Receiver/Transmitter</h2>
+					<p class="intro">The 2 UART pins in WiringPi are: 15, 16</p>
+					<p>UART is a handy, straight forward way to interface an Arduino ( or bootloaded ATmega ) with your Pi. You must, however, be careful with logic-levels between the two devices: the Pi is 3.3v and the Arduino is 5v. Connect the two and you might conjure up some magic blue smoke.</p>
+					<p>Personally I'm a fan of building out a <a href="http://www.hobbytronics.co.uk/ATmega328-arduino">Arduino Bootloaded ATmega 328</a> circuit on a breadboard with a voltage regulator to take the Pi's 5v line and convert it to 3.3v. The ATmega 328 seems to run quite happily at 3.3v using a 16Mhz crystal and you'll then have an Arduino clone with 3.3v logic.</p>
+<p>The following python example opens the Pi's UART at 9600baud and puts 'hello world'</p>
+					<pre class="prettyprint">import wiringpi2 as wiringpi
+wiringpi.wiringPiSetup()
+serial = wiringpi.serialOpen('/dev/ttyAMA0',9600)
+wiringpi.serialPuts(serial,'hello world!')
+</pre>
+				</article>
+				<article>
+					<h2>GPIO - General Purpose Input/Output</h2>
+					<p class="intro">The 8 GPIO pins in WiringPi are: 0, 1, 2, 3, 4, 5, 6, 7</p>
+				</article>
+				<article>
+					<h2>SPI - Serial Peripheral Interface</h2>
+					<p class="intro">Known as the four-wire serial bus, SPI lets you daisy-chain multiple compatible devices off a single set of pins by assigning them different addresses.</p>
+					<p>A simple example of an SPI peripheral is the MCP23S17 digital IO expander chip Note the S in place of the 0 found on the I<sup>2</sup>C version. Using it in WiringPi2 is a doddle:</p>
+					<pre class="prettyprint linenums lang-python">import wiringpi2 as wiringpi
+HIGH = 1
+OUTPUT = 1
+PIN_BASE = 65
+SPI_ADDR = 0x20
+wiringpi.wiringPiSetup()
+wiringpi.mcp23S17Setup(PIN_BASE,SPI_ADDR)
+# 16 pins including the starting pin
+mcp23S17pins = range(PIN_BASE,PIN_BASE+15)
+for pin in mcp23S17pins:
+	wiringpi.pinMode(pin,OUTPUT)
+	wiringpi.digitalWrite(pin,HIGH)</pre>
+
+					<p>You can also use the SPI port to "Bit-Bang" an ATmega 328, loading Arduino sketches onto it with Gordon's modified version of AVRDude.</p>
+					<p>Hook up you Pi's SPI port to that of your ATmega, and <em>power the ATmega from the 3.3v pin on the Pi</em>. Make sure you're not running any SPI device drivers, and run "avrdude -p m328p -c gpio" to verify the connection.</p>
+					<p>See the individual pins to learn how to connect up your ATmega.</p>
+				</article>
+				<article>
+					<h2>I2C - Inter Integrated Circuit</h2>
+					<p class="intro">The Raspberry Pi's I<sup>2</sup>C pins are an extremely useful way to talk to many different types of external peripheral; from the MCP23017 digital IO expander, to a connected ATmega.</p>
+
+					<p>You can verify the address of connected I<sup>2</sup>C peripherals with a simple one-liner:</p>
+					<pre class="prettyprint linenums lang-bash">sudo apt-get install i2c-tools
+sudo i2cdetect -y 1</pre>
+					<p>You can access i2c from Python using the smbus library:</p>
+					<pre class="prettyprint linenums lang-python">import smbus
+DEVICE_BUS = 1
+DEVICE_ADDR = 0x15
+bus = smbus.SMBus(DEVICE_BUS)
+bus.write_byte_data(DEVICE_ADDR, 0x00, 0x01)</pre>
+				</article>
+				<article>
+					<h2>Raspberry Pi Ladder Board</h2>
+					<p class="intro">The inexpensive Raspberry Pi Ladder Kit is a great way to get started with GPIO tinkering.</p>
+					<p>It connects 12 LEDs and 4 buttons directly to the GPIO pins, making it extremely easy to start programming. Using the pins on the left, you simply set 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9, the LEDs, to OUTPUT (1) and 10,11,12,14, the buttons, to INPUT (0) and start reading/writing.</p>
+<p>In practice, it's actually a little more complicated than this. The buttons all need their pull up/down switched to PUD_UP/UP (2), because pressing a button on the ladder board pulls that pin down to ground.</p>
+<p>The code below should get you started:</p>
+					<pre class="prettyprint lang-python">import wiringpi2 as wiringpi
+INPUT = 0
+OUTPUT = 1
+LOW = 0
+HIGH = 1
+BUTTONS = [13,12,10,11]
+LEDS = [0,1,2,3,4,5,6,7,8,9]
+PUD_UP = 2
+
+wiringpi.wiringPiSetup()
+
+for button in BUTTONS:
+    wiringpi.pinMode(button,INPUT)
+    wiringpi.pullUpDnControl(button,PUD_UP)
+
+for led in LEDS:
+    wiringpi.pinMode(led,OUTPUT)
+
+while 1:
+    for index,button in enumerate(BUTTONS):
+        button_state = wiringpi.digitalRead(button)
+        first_led = LEDS[index*2]
+        second_led = LEDS[(index*2)+1]
+        #print str(button) + ' ' + str(button_state)
+        wiringpi.digitalWrite(first_led,1-button_state)
+        wiringpi.digitalWrite(second_led,1-button_state)
+    wiringpi.delay(20)</pre>
+<p>The button locations and their corresponding pin numbers also don't correspond with those of the LEDs so we have to pair up the buttons accordingly for a basic example. Finally, never forget to call wiringpi.wiringPiSetup() or nothing much will happen!</p>
+				</article>
+				<article>
+					<h2>Raspberry Pi WiringPi</h2>
+					<p>WiringPi is an attempt to bring Arduino-wiring-like simplicity to the Raspberry Pi. The goal is to have a single common platform and set of functions for accessing the Raspberry Pi GPIO across muliple languages. WiringPi is a C library at heart, but it's available to both Ruby and Python users who can "gem install wiringpi" or "pip install wiringpi2" respectively.</p>	
+					<p>Python users note the 2 on the end, the WiringPi2-Python library finally brings a whole host of existing WiringPi functionality to Python including brand new features from WiringPi 2.</p>
+					<p>For more information about WiringPi you should visit <a href="http://wiringpi.com/">the official WiringPi website.</a></p>
+
+
+					<h2 style="margin-top:20px;">Getting started with WiringPi</h2>
+					<p>WiringPi uses its own <a href="http://wiringpi.com/pins/">pin numbering scheme</a>, here you'll learn how WiringPi numbers your GPIO pins, what those pins do and how to do shiny things with them from within Python or Ruby.</p>
+					<p>WiringPi, the Arduino-like GPIO library for the Pi, is available in C right from <a href="https://git.drogon.net/?p=wiringPi;a=summary">Gordon's git repository</a>, Python, Ruby and even Perl and PHP to a lesser extent.</p>
+					<p>Installing to Python couldn't be easier, just:</p>
+					<pre class="prettyprint lang-bash">sudo pip install wiringpi2</pre>
+					<p>Note the 2 on the end? That's the all new, shinier WiringPi!</p>
+				</article>
+				<article>
+					<h2>PiBorg LedBorg RGB LED Board</h2>
+					<p>The <a rel="nofollow" href="http://www.piborg.org/ledborg/">PiBorg LedBorg</a> is an ultra-bright RGB LED board for the Raspberry Pi. It has its own driver, so you don't need to drive it manually.</p>
+					<p>If you want a much, much wider range of colours, though, you can drive it manually using softPwm in WiringPi. The pin assignments for this are as follows:</p>
+					<p><strong>WiringPi pin 0:</strong> Red LED<br />
+					<strong>WiringPi pin 2:</strong> Green LED<br />
+					<strong>WiringPi pin 3:</strong> Blue LED</p>
+					<p>This is easy using WiringPi in Python:</p>
+					<pre class="prettyprint">import wiringpi2 as wiringpi
+wiringpi.wiringPiSetup()
+wiringpi.softPwmCreate(0,0,100)
+wiringpi.softPwmCreate(2,0,100)
+wiringpi.softPwmCreate(3,0,100)
+wiringpi.softPwmWrite(3,100)
+wiringpi.softPwmWrite(0,100)
+					</pre>
+				</article>
+				<article>
+					<h2>Geekroo Clockatoo Clock Board With buzzer</h2>
+					<p class="intro">The Clockatoo buzzer is available on WiringPi pin 7, GPIO pin 4.</p>
+					<p>The <a rel="nofollow" href="https://www.modmypi.com/geekroo-raspberry-pi-real-time-clock">GeekRoo Clockatoo</a> is a great little board combining a battery-backed up real-time clock, a 4 digit, 7 segment display and a buzzer into one package.</p>
+					<p><a rel="nofollow" href="http://geekroo.com/wiki/Manual:RPi_Expansion_Board_-_Clockatoo">GeekRoo's own instruction manual</a> gets you started with the clock itself, but doesn't tell you how to use the buzzer.</p>
+					<p>WiringPi's softTone does a great job of pulsing the buzzer at a variety of annoying ( or alerting ) speeds, try this for a simple alert tone:</p>
+
+					<pre class="prettyprint">import wiringpi2 as wiringpi
+wiringpi.wiringPiSetup()
+wiringpi.softToneCreate(7)
+wiringpi.softToneWrite(7,1)
+					</pre>
+
+					<p>The second parameter for softToneWrite is the frequency, drive it higher and the alarm sound will become steadily more irritating until you're sure to wake up!</p>
+				</article>
+				<article>
+					<h2>ATmega 328p / Arduino over SPI</h2>
+					<p class="intro">Did you know that your Pi could power and program an ATmega 328p/Arduino directly, with nothing but a few wires, a breadboard, a 16Mhz crystal oscillator and some 22pF capacitors?</p>
+					<p>Read my <a href="http://pi.gadgetoid.com/article/building-the-pico-piduino">complete Pico PiDuino tutorial</a> to get started for just over &pound;5</p>
+					<p>You'll need to install <a href="https://projects.drogon.net/raspberry-pi/gertboard/arduino-ide-installation-isp/">Gordon's modified AVRDude</a>.</p>
+					<p>Connect <i class="icon-pushpin"></i>8/CEO to your ATmega's Reset/RST pin, <i class="icon-pushpin"></i>9/MISO to its MISO pin (D12), <i class="icon-pushpin"></i>10 to its MOSI pin (D11) and <i class="icon-pushpin"></i>11/SCLK to its SCLK pin (D13).</p>
+					<p>Power your ATmega with the <i class="icon-bolt"></i>3.3v and GND pins from your Pi, and you're good to go.</p>
+					<p>Make sure you have no rogue SPI device drivers running and check it's connected correctly using:</p>
+					<pre class="prettyprint">avrdude -p m328p -c gpio</pre>
+					<p>To get started compiling Arduino sketches from the command line:</p>
+					<pre class="prettyprint">sudo apt-get install arduino arduino-mk</pre>
+					<p><a href="/arduino/Makefile">This basic Makefile</a> should get you started. Create a basic sketch, name it mysketch.ino and run:</p>
+					<pre class="prettyprint">export BOARD=atmega328<br />make<br />avrdude -p m328p -c gpio -e -U flash:w:build-cli/Arduino.hex</pre>
+				</article>
+				<article>
+					<h2>PWM - Pulse Width Modulation</h2>
+				</article>
+			</div>
+		</div>
+		</div>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/cycle/2.9999.81/jquery.cycle.all.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/prettify/0.1/prettify.js"></script>
+    	<script src='/prettify/lang-ruby.js'></script>
+    	<script src='/prettify/lang-bash.js'></script>
+		<script src='//cdn.jsdelivr.net/history.js/1.7.1/history.js'></script>
+		<script src='//cdn.jsdelivr.net/history.js/1.7.1/history.adapter.jquery.js'></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+
+				var History = window.History;
+				
+				History.Adapter.bind(window,'statechange',function(){
+					var State = History.getState();
+					var url = State.url.replace('http://pi.gadgetoid.com','')
+//alert(url);
+					if( url == '/pinout' )
+					{
+						jQuery('h1').click();
+					}
+					else
+					{
+						jQuery('a[href="' + url + '"]').click();
+					}
+				})
+			
+				window.prettyPrint&&prettyPrint();
+				jQuery('#pages').cycle({
+					timeout:0,
+					slideExpr:'article',
+					startingSlide:40,
+					speed:200,
+					containerResize:0
+				});
+
+				jQuery('.legend li a').on('click',function(e){
+					e.preventDefault();
+					jQuery('nav#gpio li').removeClass('legend');	
+					jQuery('nav#gpio li').removeClass('active');
+					pins = '';
+					title = jQuery(this).attr('title');
+					url = jQuery(this).attr('href');
+					page = 0;
+
+					//document.title = 'Raspberry Pi Pinout - ' + title;
+
+					jQuery('span.default').show();
+					jQuery('span.alternate').hide();
+
+					switch( jQuery(this).parent().attr('class') )
+					{
+						case 'legend_5':
+							pins = '.pin2,.pin4';
+							page = 41;
+							break;
+						case 'legend_3':
+							pins = '.pin1,.pin17';
+							page = 42;
+							break;
+						case 'legend_ground':
+							pins = '.pin6,.pin9,.pin14,.pin20,.pin25,.pin30,.pin34,.pin39';
+							page = 43;
+							break;
+						case 'legend_uart':
+							pins = '.pin8,.pin10';
+							page = 44;
+							break;
+						case 'legend_gpio':
+							pins = '.pin7,.pin11,.pin12,.pin13,.pin15,.pin16,.pin18,.pin22';
+							page = 45;
+							break;
+						case 'legend_spi':
+							pins = '.pin19,.pin21,.pin23,.pin24,.pin26';
+							page = 46;
+							break;
+						case 'legend_atmega':
+							pins = '.pin19,.pin21,.pin23,.pin24';
+							page = 52;
+							break;
+						case 'legend_i2c':
+							pins = '.pin3,.pin5,.pin27,.pin28';
+							page = 47;
+							break;
+						case 'legend_pwm':
+							pins = '.pin35,.pin33,.pin32,.pin12';
+							page = 53;
+							break;
+						case 'legend_ladder':
+							//pins = '.pin3,.pin5,.pin7,.pin11,.pin13,.pin15,.pin19,.pin21,.pin12,.pin16,.pin18,.pin22,.pin24,.pin26';
+							page = 48;
+							jQuery('nav#gpio ul li').each(function(){
+								if( jQuery(this).find('span.legend_ladder').length > 0 )
+								{
+									jQuery(this).addClass('legend');
+									jQuery(this).find('span.default').hide();
+									jQuery(this).find('span.legend_ladder').show();
+								}
+							});
+							break;
+						case 'legend_wiringpi':
+							//pins = '.pin3,.pin5,.pin7,.pin11,.pin13,.pin15,.pin19,.pin21,.pin12,.pin16,.pin18,.pin22,.pin24,.pin26';
+							page = 49;
+							jQuery('nav#gpio ul li').each(function(){
+								if( jQuery(this).find('span.legend_wiringpi').length > 0 )
+								{
+									jQuery(this).addClass('legend');
+									jQuery(this).find('span.default').hide();
+									jQuery(this).find('span.legend_wiringpi').show();
+								}
+							});
+							break;
+						case 'legend_ledborg':
+							page = 50;
+							jQuery('nav#gpio ul li').each(function(){
+								if( jQuery(this).find('span.legend_ledborg').length > 0 )
+								{
+									jQuery(this).addClass('legend');
+									jQuery(this).find('span.default').hide();
+									jQuery(this).find('span.legend_ledborg').show();
+								}
+							});
+							break;
+						case 'legend_clockatoo':
+							page = 51;
+							jQuery('nav#gpio ul li').each(function(){
+								if( jQuery(this).find('span.legend_clockatoo').length > 0 )
+								{
+									jQuery(this).addClass('legend');
+									jQuery(this).find('span.default').hide();
+									jQuery(this).find('span.legend_clockatoo').show();
+								}
+							});
+							break;
+					}
+					jQuery(pins).addClass('legend');
+					jQuery('#pages').cycle(page);
+					//history.pushState({legend:jQuery(this).attr('class')}, 'Raspberry Pi Pinout - ' + title, url);
+
+					History.pushState({legend:jQuery(this).attr('class'),url:jQuery(this).attr('href')}, 'Raspberry Pi Pinout - ' + title, url)
+				});
+
+				jQuery('nav#gpio ul.bottom').find('li').each(function(){
+					jQuery(this).find('a').on('click',function(e){	
+						jQuery('span.default').show();
+						jQuery('span.alternate').hide();
+						jQuery('nav#gpio li').removeClass('legend');
+						jQuery('#pages').cycle(jQuery(this).parent().index());
+						jQuery('nav#gpio li').removeClass('active');
+						jQuery(this).parent().addClass('active');
+						title = jQuery(this).find('span.default').html().replace('<small>','').replace('</small>','')
+.replace('<span class="phys">','Pin ').replace('</span>',': ');
+						History.pushState({pin:jQuery(this).parent().index(),url:$(this).attr('href')}, title, jQuery(this).attr('href'));
+						e.preventDefault();
+					})
+				});
+
+				jQuery('nav#gpio ul.top').find('li').each(function(){
+					jQuery(this).find('a').on('click',function(e){
+						jQuery('span.default').show();
+						jQuery('span.alternate').hide();
+						jQuery('nav#gpio li').removeClass('legend');
+						jQuery('#pages').cycle(20+jQuery(this).parent().index());
+						jQuery('nav#gpio li').removeClass('active');
+						jQuery(this).parent().addClass('active');
+						title = jQuery(this).find('span.default').html().replace('<small>','').replace('</small>','')
+.replace('<span class="phys">','Pin ').replace('</span>',': ');
+						History.pushState({pin:20+jQuery(this).parent().index(),url:$(this).attr('href')}, title, jQuery(this).attr('href'));
+						e.preventDefault();
+					})
+				});
+				jQuery('h1').on('click',function(){
+						jQuery('span.default').show();
+						jQuery('span.alternate').hide();
+						jQuery('nav#gpio li').removeClass('legend');
+						jQuery('nav#gpio li').removeClass('active');
+						jQuery('#pages').cycle(40);
+						History.pushState({pin:40,url:'http://pi.gadgetoid.com/pinout'}, 'Raspberry Pi Pinout', '/pinout');
+				});
+				
+				url = window.location.href.replace('http://pi.gadgetoid.com/','/');
+
+				jQuery('a[href="' + url + '"]').click();
+			});
+		</script>
+	</body>
+</html>
