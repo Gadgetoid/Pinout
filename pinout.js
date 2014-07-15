@@ -30,7 +30,6 @@ jQuery(document).ready(function(){
 	jQuery('.legend li a').on('click',function(e){
 		e.preventDefault();
 		jQuery('nav#gpio li').removeClass('legend active');
-		var pins = '';
 		var title = jQuery(this).attr('title');
 		var url = jQuery(this).attr('href');
 
@@ -44,20 +43,12 @@ jQuery(document).ready(function(){
 			pins = jQuery(this).parent().data('pins').split(',');
 		}
 
-		jQuery('nav#gpio ul li').each(function(){
-			if( jQuery(this).find('span.' + legend).length > 0 )
-			{
-				jQuery(this).addClass('legend');
-				jQuery(this).find('span.default').hide();
-				jQuery(this).find('span.' + legend).show();
-			}
-		});
+		jQuery('span.' + legend).show().parent().parent().addClass('legend').find('span.default').hide();
 
 		var x = pins.length;
 		while(x--){
 			jQuery('.pin' + pins[x]).addClass('legend');
 		}
-		//jQuery(pins).addClass('legend');
 		jQuery('#pages').cycle(page);
 
 		History.pushState({legend:jQuery(this).attr('class'),url:jQuery(this).attr('href')}, 'Raspberry Pi Pinout - ' + title, url)
@@ -69,18 +60,16 @@ jQuery(document).ready(function(){
 		jQuery('nav#gpio li').removeClass('legend active');
 		jQuery('#pages').cycle(offset+object.parent().index());
 		object.parent().addClass('active');
-		title = object.find('span.default').html()
-			.replace('<small>','')
-			.replace('</small>','')
-			.replace('<span class="phys">','Pin ')
-			.replace('</span>',': ');
+		title = 'Pin ' + object.find('span.default').text().replace(' ',': ');
 		History.pushState({pin:offset+object.parent().index(),url:object.attr('href')}, title, object.attr('href'));
 	}
 
 	jQuery('nav#gpio ul.bottom a').on('click',function(e){
-		e.preventDefault();showPage(jQuery(this),0);});
+		e.preventDefault();showPage(jQuery(this),0);
+	});
 	jQuery('nav#gpio ul.top a').on('click',function(e){
-		e.preventDefault();showPage(jQuery(this),pincount/2);});
+		e.preventDefault();showPage(jQuery(this),pincount/2);
+	});
 
 	jQuery('h1').on('click',function(){
 		jQuery('span.default').show();
